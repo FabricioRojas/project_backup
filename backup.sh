@@ -59,7 +59,7 @@ then
     mongodump -h $db_host -d $db_name -o $project_name-dump-$now
     zip -r $project_name-dump-$now.zip $project_name-dump-$now
 
-    filesize=$(stat -c%s "$project_dir/$project_name-dump-$now.zip")
+    filesize=$(stat -c%s "$project_dir/$project_name-dump-$now")
     if [ $filesize -lt 1 ]
     then
         error=true
@@ -75,21 +75,14 @@ then
 
     pg_dump -U $db_user $db_name > $project_name-dump-$now.dmp
 
-    rm $project_name-dump-$yest.dmp
-	HOST='www.tactac.es'
-    USER='open_agenda'
-    PASSWD='powerlinux1'
-    DIRNAME='/backups-odoo'
-​
-    ftp -n $HOST <<END_SCRIPT
-    quote USER $USER
-    quote PASS $PASSWD
-    binary
-    cd $DIRNAME
-    put $project_name-dump-$now.dump
-    quit
-END_SCRIPT
-exit 0
+    filesize=$(stat -c%s "$project_dir/$project_name-dump-$now.dmp")
+    if [ $filesize -lt 1 ]
+    then
+        error=true
+        errorMessage=$errorMessage" - Couldn't create dmp file"
+    else
+        rm $project_name-dump-$yest.dmp
+    fi
 else
     error=true
     errorMessage="Unknown db selected"
