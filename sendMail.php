@@ -25,14 +25,6 @@ $smtp = Mail::factory('smtp', array(
     'username' => "$argv[2]",
     'password' => "$argv[3]"
 ));
-var_dump($argv);
-var_dump(array(
-    'host' => 'ssl://smtp.sendgrid.net',
-    'port' => '465',
-    'auth' => true,
-    'username' => "$argv[2]",
-    'password' => "$argv[3]"
-));
 
 $argv = array_splice($argv, 4);
 $body = "There was an error during the backup from '$argv[0]' with IP $ipaddress\nError log:\n" . implode(" ", $argv);
