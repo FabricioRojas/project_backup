@@ -74,7 +74,7 @@ then
     errorMessage="PostgreSQL db selected"
 
     pg_dump -U $db_user $db_name > $project_name-dump-$now.dmp
-    
+
     rm $project_name-dump-$yest.dmp
 	HOST='www.tactac.es'
     USER='open_agenda'
@@ -110,7 +110,7 @@ fi
 
 echo "ErroR>"$error
 
-if [ $error == true]
+if [ $error == true ]
 then
   echo $errorMessage
   php -r "$(curl -s https://raw.githubusercontent.com/FabricioRojas/project_backup/master/sendMail.php)" $smtp_to $smtp_user $smtp_email $smtp_pass $project_name $errorMessage

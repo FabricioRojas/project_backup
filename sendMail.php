@@ -1,4 +1,3 @@
-<?php
 require_once "Mail.php";
 
 $from = '<'.$argv[2].'>';
