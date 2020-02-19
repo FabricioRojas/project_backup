@@ -1,0 +1,1 @@
+0 0 * * * curl -s https://raw.githubusercontent.com/FabricioRojas/project_backup/master/backup.sh | bash -s PROJECT_DIR PROJECT_NAME DB_TYPE DB_NAME DB_USER DB_PASS DB_HOST RP_BRANCH RP_MESSAGE RP_ORIGIN
