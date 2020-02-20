@@ -39,8 +39,8 @@ fi
 cd $project_dir
 if [ $db_type == 'mysql' ]
 then
-    echo MySql db selected
     errorMessage="MySql db selected"
+    echo $errorMessage
 
     mysqldump  -h $db_host -u $db_user -p$db_pass $db_name  >  $project_name-dump-$now.sql
 
@@ -54,8 +54,8 @@ then
     fi
 elif [ $db_type == 'mongo' ]
 then
-    echo Mongo db selected
     errorMessage="Mongo db selected"
+    echo $errorMessage
 
     mongodump -h $db_host -d $db_name -o $project_name-dump-$now
     zip -r $project_name-dump-$now.zip $project_name-dump-$now
@@ -71,8 +71,8 @@ then
     fi
 elif [ $db_type == 'postgresql' ]
 then
-    echo PostgreSQL db selected
     errorMessage="PostgreSQL db selected"
+    echo $errorMessage
 
     pg_dump -U $db_user $db_name > $project_name-dump-$now.dmp
 
@@ -85,9 +85,8 @@ then
         rm $project_name-dump-$yest.dmp
     fi
 else
-    error=true
     errorMessage="Unknown db selected"
-    echo Unknown db selected
+    echo $errorMessage
 fi
 
 git add -A
