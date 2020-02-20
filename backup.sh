@@ -10,7 +10,7 @@ db_type=$6
 db_name=$7
 db_user=$8
 db_pass=$9
-db_host=$10
+db_host=${$10}
 rp_branch=${11}
 rp_message=${12}
 rp_origin=${13}
@@ -32,7 +32,7 @@ then
 fi
 if [ -z "$db_host" ]
 then
-    db_host=0
+    db_host="localhost"
 fi
 
 cd $project_dir
