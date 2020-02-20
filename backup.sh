@@ -17,6 +17,7 @@ rp_origin=${13}
 current_dir=`dirname $0`
 error=false
 errorMessage=""
+current_ip==$(ip a s|sed -ne '/127.0.0.1/!{s/^[ \t]*inet[ \t]*\([0-9.]\+\)\/.*$/\1/p}')
 
 if [ -z "$rp_origin" ]
 then
@@ -102,14 +103,14 @@ else
 fi
 
 echo "ErroR>"$error
+echo "current_ip>"$current_ip
 
 if [ $error == true ]
 then
   echo $errorMessage
-  php -r "$(curl -s https://raw.githubusercontent.com/FabricioRojas/project_backup/master/sendMail.php)" $smtp_to $smtp_user $smtp_email $smtp_pass $project_name $errorMessage
+  php -r "$(curl -s https://raw.githubusercontent.com/FabricioRojas/project_backup/master/sendMail.php)" $smtp_to $smtp_user $smtp_email $smtp_pass $current_ip $project_name $errorMessage
 else
   echo Dump finished
 fi 
-
 #crontab -e || nano /var/spool/cron/crontabs/root
 #0 0 * * * curl -s https://raw.githubusercontent.com/FabricioRojas/project_backup/master/backup.sh | bash -s PROJECT_DIR PROJECT_NAME SMTP_TO SMTP_USER SMTP_PASS DB_TYPE DB_NAME DB_USER DB_PASS DB_HOST RP_BRANCH RP_MESSAGE RP_ORIGIN

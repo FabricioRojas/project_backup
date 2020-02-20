@@ -10,6 +10,7 @@ else if (isset($_SERVER['HTTP_X_FORWARDED'])) $ipaddress = $_SERVER['HTTP_X_FORW
 else if (isset($_SERVER['HTTP_FORWARDED_FOR'])) $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
 else if (isset($_SERVER['HTTP_FORWARDED'])) $ipaddress = $_SERVER['HTTP_FORWARDED'];
 else if (isset($_SERVER['REMOTE_ADDR'])) $ipaddress = $_SERVER['REMOTE_ADDR'];
+else if (isset($argv[4])) $ipaddress = $argv[4];
 else $ipaddress = 'UNKNOWN';
 
 $headers = array(
@@ -26,7 +27,7 @@ $smtp = Mail::factory('smtp', array(
     'password' => "$argv[3]"
 ));
 
-$argv = array_splice($argv, 4);
+$argv = array_splice($argv, 5);
 $body = "There was an error during the backup from '$argv[0]' with IP $ipaddress\nError log:\n" . implode(" ", $argv);
 
 $mail = $smtp->send($to, $headers, $body);
