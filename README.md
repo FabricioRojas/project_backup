@@ -19,40 +19,40 @@ This CRON example use the online files from **this** repository, but you you nee
 
 
 - **PROJECT_DIR** -- required
-> Project full path
+    > Project full path
 
 - **PROJECT_NAME** -- required
-> Project name that will be used on the backup files
+    > Project name that will be used on the backup files
 
 - **SMTP_TO** -- required
-> Email where the messages will be sent
+    > Email where the messages will be sent
 
 - **SMTP_USER** -- required
-> SMTP username, defualt smtp service is "sendgrid" and the default port is "465" you can change at sendMail.php line 22/23
+    > SMTP username, defualt smtp service is "sendgrid" and the default port is "465" you can change at sendMail.php line 22/23
 
 - **SMTP_PASS** -- required
-> SMTP password
+    > SMTP password
 
 - **DB_TYPE** -- required
-> mysql || postgresql || mongo
+    > mysql || postgresql || mongo
 
 - **DB_NAME** -- required
-> Database name
+    > Database name
 
 - **DB_USER**
-> Database username
+    > Database username
 
 - **DB_PASS**
-> Database password
+    > Database password
 
 - **DB_HOST** 
-> Database host
+    > Database host
 
 - **RP_BRANCH**
-> Repository branch name
+    > Repository branch name
 
 - **RP_MESSAGE**
-> Commit default message
+    > Commit default message
 
 - **RP_ORIGIN**
-> Repository remote name
+    > Repository remote name
