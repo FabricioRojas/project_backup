@@ -1,13 +1,13 @@
 # Project Buckup
 
-Is a simple way to keep all youyr projects backedup
+Is a simple way to keep all your projects backedup
 
 The scrip first backup the database and then upload all the project changes included the DB backup into any repository you want
 
 > **Current supported Databases:** Mysql, Mongo, Postgresql
 
 
-The script is thought to be used in a CRON TASk but could be executed manually anyway
+The script is thought to be used in a CRON TASK but could be executed manually anyway
 
 
 ## CRON example: 
@@ -15,7 +15,7 @@ The script is thought to be used in a CRON TASk but could be executed manually a
 ```
 0 0 * * * curl -s https://raw.githubusercontent.com/FabricioRojas/project_backup/master/backup.sh | bash -s PROJECT_DIR PROJECT_NAME SMTP_TO SMTP_USER SMTP_PASS DB_TYPE DB_NAME DB_USER DB_PASS DB_HOST RP_BRANCH RP_MESSAGE RP_ORIGIN
 ```
-This CRON example use the online files from **this** repository, but you you need to do some changes youll need to download the files and modify the CRON statement
+This CRON example use the online files from **this** repository, but if you need to do some changes you'll need to download the files and modify the CRON statement
 
 
 - **PROJECT_DIR** -- required
